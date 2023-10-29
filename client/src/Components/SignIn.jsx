@@ -12,7 +12,7 @@ const SignIn = () => {
     e.preventDefault();
 
     // Define the API endpoint. Update this URL to point to your backend endpoint.
-    const apiEndpoint = "http://localhost:5000/auth/login";
+    const apiEndpoint = "/auth/login";
 
     try {
       const response = await fetch(apiEndpoint, {

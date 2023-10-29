@@ -15,7 +15,7 @@ const SpecificCountry = () => {
   const {id}=useParams()
 
   useEffect(()=>{
-        axios.get(`${API_URL}/countries/${id}`)
+        axios.get(`${API_URL}/api/countries/${id}`)
         .then(response=>{
           setCountry(response.data)
           // COUNTRY_FLAG=response.data.flag_url
