@@ -1,0 +1,24 @@
+:root {
+  --primary-color: black;
+  --font-primary: white;
+}
+.cities-container {
+  background-color: var(--primary-color);
+  color: var(--font-primary);
+  padding: 30px 15px;
+}
+
+.city-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.city-card {
+  background-color: orange;
+  width: 300px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+}

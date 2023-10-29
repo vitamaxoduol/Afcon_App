@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200&family=Open+Sans:wght@300&family=Quicksand:wght@700&display=swap");
+body {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* __________Commons css________ */
+
+/* Flex box center */
+.fxc {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Flex dox start */
+.fxs {
+  display: flex;
+  justify-content:  flex-start;
+  flex-wrap: wrap;
+}
+
+/* Flex box end */
+.fxe {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+/* Flex box space between */
+.fxsb {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+/* Google icons */
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 200, "GRAD" -25, "opsz" 24;
+  font-size: 40px;
+}
