@@ -21,9 +21,9 @@ import os
 
 # Create the Flask app
 app = Flask(__name__, 
-            static_folder='../client/dist', 
+            static_folder='../client', 
             static_url_path='/',
-            template_folder='../client/dist')
+            template_folder='../client')
 app.config.from_object(Config)
 bcrypt =Bcrypt(app)
 server_session = Session(app)
