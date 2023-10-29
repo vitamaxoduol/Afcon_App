@@ -1,4 +1,4 @@
-from flask import Flask, jsonify,request
+from flask import Flask, jsonify,request, send_from_directory
 from flask_migrate import Migrate
 from flask_cors import CORS
 from flask_login import LoginManager
@@ -9,6 +9,7 @@ from routes.api_authentication import auth_bp
 from models.user import User
 from flask_bcrypt import Bcrypt
 from flask_session import Session
+import os
 
 # from models.group_stage import GroupStage
 # from models.country import Country
@@ -19,11 +20,15 @@ from flask_session import Session
 # app = create_app()
 
 # Create the Flask app
-app = Flask(__name__)
+app = Flask(__name__, 
+            static_folder='../client/dist', 
+            static_url_path='/',
+            template_folder='../client/dist')
 app.config.from_object(Config)
 bcrypt =Bcrypt(app)
 server_session = Session(app)
 # app.config['SECRET_KEY'] = SECRET_KEY
+
 
 
 
@@ -62,6 +67,14 @@ def handle_500(e):
 @app.errorhandler(401)
 def handle_401(e):
     return jsonify(error='Unauthorized'), 401
+
+@app.route('/', defaults={'path': ''})
+@app.route('/<path:path>')
+def serve(path):
+    if path != "" and os.path.exists(app.static_folder + '/' + path):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 
 
 if __name__ == '__main__':

@@ -6,7 +6,8 @@ import os
 load_dotenv()
 class Config:
     # define constant variables for the project 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # postgres://afcon_db_user:7WKxpbZH3tZ9poiO45vWIgobesXKtqUN@dpg-ckv1eri37rbc73e66ggg-a.oregon-postgres.render.com/afcon_db
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_ECHO = True
     
