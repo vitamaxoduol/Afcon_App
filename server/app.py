@@ -21,9 +21,9 @@ import os
 
 # Create the Flask app
 app = Flask(__name__, 
-            static_folder='../client', 
+            static_folder='../client/dist', 
             static_url_path='/',
-            template_folder='../client')
+            template_folder='../client/dist')
 app.config.from_object(Config)
 bcrypt =Bcrypt(app)
 server_session = Session(app)
@@ -71,9 +71,13 @@ def handle_401(e):
 @app.route('/', defaults={'path': ''})
 @app.route('/<path:path>')
 def serve(path):
+    print(f"Serving path: {path}")
+    print(f"Checking existence of: {app.static_folder + '/' + path}")
     if path != "" and os.path.exists(app.static_folder + '/' + path):
+        print(f"Serving file from: {app.static_folder + '/' + path}")
         return send_from_directory(app.static_folder, path)
     else:
+        print(f"Serving index.html from: {app.static_folder}")
         return send_from_directory(app.static_folder, 'index.html')
 
 
