@@ -14,7 +14,7 @@ const Comments = ({ handleClose3 }) => {
 
   useEffect(() => {
     if (refreshComments) {
-      axios.get(`${API_URL}/api/comments`)
+      axios.get(`${API_URL}https://afcona-app.onrender.com/api/comments`)
         .then(response => {
           setComments(response.data);
         })

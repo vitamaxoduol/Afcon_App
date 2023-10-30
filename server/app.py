@@ -11,14 +11,6 @@ from flask_bcrypt import Bcrypt
 from flask_session import Session
 import os
 
-# from models.group_stage import GroupStage
-# from models.country import Country
-# from models.comment import Comment
-# from models.player import Player
-
-# app initialization
-# app = create_app()
-
 # Create the Flask app
 app = Flask(__name__, 
             static_folder='../client/dist', 
@@ -30,14 +22,9 @@ server_session = Session(app)
 # app.config['SECRET_KEY'] = SECRET_KEY
 
 
-
-
-# CORS(app, auth_bp, resources={r"/*": {"origins": "*", "allow_headers": ["Authorization", "Content-Type"]}})
 allowed_origins = ["http://localhost:5173", "https://afcona-app.onrender.com"]
 # CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://localhost:5173"}, r"/auth/*": {"origins": "http://localhost:5173"}})
 CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": allowed_origins}, r"/auth/*": {"origins": allowed_origins}})
-
-
 
 
 # Initialize database
@@ -52,10 +39,6 @@ login_manager.login_view = 'auth_bp.login'
 # Register blueprints
 app.register_blueprint(auth_bp, url_prefix='/auth')
 app.register_blueprint(api_bp, url_prefix='/api')
-
-# # This will generate a secret key for our JWT tokens
-# secret_key = base64.b64encode(os.urandom(24)).decode('utf-8')
-# print(secret_key)
 
 # loads the user object 
 @app.login_manager.user_loader
