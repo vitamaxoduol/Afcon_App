@@ -12,17 +12,14 @@ from flask_session import Session
 import os
 
 # Create the Flask app
-app = Flask(__name__, 
-            static_folder='../client/dist', 
-            static_url_path='/',
-            template_folder='../client/dist')
+app = Flask(__name__)
 app.config.from_object(Config)
 bcrypt =Bcrypt(app)
 server_session = Session(app)
 # app.config['SECRET_KEY'] = SECRET_KEY
 
 
-allowed_origins = ["https://afcona-app.onrender.com"]
+allowed_origins = ["http://localhost:5173", "https://afcona-app.onrender.com"]
 # CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "http://localhost:5173"}, r"/auth/*": {"origins": "http://localhost:5173"}})
 CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": allowed_origins}, r"/auth/*": {"origins": allowed_origins}})
 
